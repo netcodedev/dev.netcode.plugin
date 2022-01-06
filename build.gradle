@@ -1,0 +1,98 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
+}
+
+group = 'dev.netcode'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(11)
+	}
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            groupId = 'dev.netcode'
+            artifactId = 'plugin'
+			version = '0.0.1-SNAPSHOT'
+            pom {
+                name = 'netcodes Java Utilities'
+                description = 'Utility functions for Java'
+                url = 'https://github.com/N3TC0D3/dev.netcode.plugin'
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://github.com/N3TC0D3/dev.netcode.plugin/blob/main/LICENSE'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'netcode'
+                        name = 'Benedict Mihm'
+                        email = 'benmihm@netcode.dev'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/N3TC0D3/dev.netcode.plugin.git'
+                    url = 'https://github.com/N3TC0D3/dev.netcode.plugin'
+                }
+            }
+
+        }
+    }
+    repositories {
+    	maven {
+    		credentials {
+    			username = ossrhUsername
+    			password = ossrhPassword
+    		}
+    		def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+    		def snapshotRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+    		url = version.endsWith('SNAPSHOT') ? snapshotRepoUrl : releasesRepoUrl
+    	}
+    }
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+signing {
+    sign publishing.publications.maven
+}
+javadoc {
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+}
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+dependencies {
+    // Use JUnit Jupiter for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
+
+    // netcode util
+    implementation 'dev.netcode:util:0.0.4'
+
+    //LOMBOK
+    implementation 'org.projectlombok:lombok:1.18.20'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+	annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+	testCompileOnly 'org.projectlombok:lombok:1.18.20'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+}
+
+tasks.named('test') {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
+}
