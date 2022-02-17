@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'dev.netcode'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 
 java {
 	toolchain {
@@ -21,7 +21,7 @@ publishing {
             from components.java
             groupId = 'dev.netcode'
             artifactId = 'plugin'
-			version = '0.0.1-SNAPSHOT'
+			version = '0.0.1'
             pom {
                 name = 'netcodes Java Utilities'
                 description = 'Utility functions for Java'
