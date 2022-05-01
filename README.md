@@ -2,4 +2,4 @@
 
 # Java plugin Utilities
 
-This project contains classes to simplify the process of loading jar files containing classes at runtime, acting as plugins.
+This project simplifies loading source from external jar files at runtime. This can be used for example to realise a plugin system.
