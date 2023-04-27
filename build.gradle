@@ -79,7 +79,7 @@ repositories {
 }
 dependencies {
     // Use JUnit Jupiter for testing.
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
 
     // netcode util
     implementation 'dev.netcode:util:0.1.0'
