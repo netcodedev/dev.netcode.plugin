@@ -85,12 +85,12 @@ dependencies {
     implementation 'dev.netcode:util:0.1.0'
 
     //LOMBOK
-    implementation 'org.projectlombok:lombok:1.18.40'
-    compileOnly 'org.projectlombok:lombok:1.18.40'
-	annotationProcessor 'org.projectlombok:lombok:1.18.40'
+    implementation 'org.projectlombok:lombok:1.18.42'
+    compileOnly 'org.projectlombok:lombok:1.18.42'
+	annotationProcessor 'org.projectlombok:lombok:1.18.42'
 
-	testCompileOnly 'org.projectlombok:lombok:1.18.40'
-	testAnnotationProcessor 'org.projectlombok:lombok:1.18.40'
+	testCompileOnly 'org.projectlombok:lombok:1.18.42'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.42'
 }
 
 tasks.named('test') {
